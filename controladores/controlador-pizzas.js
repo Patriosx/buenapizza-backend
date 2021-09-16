@@ -42,7 +42,7 @@ async function recuperaPizzasPorId(req, res, next) {
             pizza: pizza
         });
     }
-  }
+}
 // Recuperar pizzas por ID de pedido
 async function recuperaPizzasPorIdPedido(req, res, next) {
     const idPedido = req.params.pid;
@@ -64,7 +64,6 @@ async function recuperaPizzasPorIdPedido(req, res, next) {
         });
     }
 }
-
 // Crear pizza
 async function crearPizza(req, res, next) {
     const errores = validationResult(req); // Valida en base a las especificaciones en el archivo de rutas para este controller específico
@@ -78,14 +77,16 @@ async function crearPizza(req, res, next) {
         tamaño,
         precio,
         masa_pizza,
-        pedidos
+        ingredientes,
+        cantidad
     } = req.body;
     const nuevaPizza = new Pizza({
         nombre: nombre,
         tamaño: tamaño,
         precio: precio,
         masa_pizza: masa_pizza,
-        pedidos: pedidos
+        ingredientes: ingredientes,
+        cantidad: cantidad
     })
     try {
         await nuevaPizza.save();
@@ -97,11 +98,10 @@ async function crearPizza(req, res, next) {
     res.status(201).json({
         pizza: nuevaPizza
     });
-  }
-
+}
 // Modificar un pedido
 async function modificarPizza(req, res, next) {
-    const {precio, masa_pizza} = req.body;
+    const {tamaño, precio, masa_pizza, cantidad} = req.body;
     const idPizza = req.params.pizid;
     let pizza;
     try {
@@ -113,8 +113,10 @@ async function modificarPizza(req, res, next) {
     }
 
     // Modificamos los datos necesarios
+    pizza.tamaño = tamaño;
     pizza.precio = precio;
     pizza.masa_pizza = masa_pizza;
+    pizza.cantidad = cantidad;
 
     try {
     // Guardar los datos modificados en la BDD
@@ -128,7 +130,6 @@ async function modificarPizza(req, res, next) {
         pizza: pizza
     });
 }
-
 // Eliminar pizza por ID
 async function eliminarPizzaPorId(req, res, next) {
     const idPizza = req.params.pizid;

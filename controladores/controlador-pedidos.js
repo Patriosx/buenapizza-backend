@@ -30,7 +30,7 @@ async function recuperaPedidosPorId(req, res, next) {
     const idPedido = req.params.pid; 
     let pedido;
     try {
-        pedido = await Pedido.findById(idPedido);
+        pedido = await Pedido.findById(idPedido).populate('id_pizzas');
     } catch (error) {
         const err = new Error('No se han podido recuperar los datos')
         err.code = 500; // Internal Server Error

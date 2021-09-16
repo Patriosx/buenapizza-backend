@@ -17,12 +17,12 @@ POST http://localhost:5000/api/usuarios/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre": "user4",
+    "nombre": "user40",
     "apellidos": "2",
     "fNacimiento": "2020/15/06",
     "telefono": "64857962",
-    "email": "user4@gmail.com",
-    "password": "246853"
+    "email": "user40@gmail.com",
+    "password": "246845"
 }
 
 ### Eliminar usuario por ID
@@ -36,12 +36,12 @@ PATCH https://buenapizza.herokuapp.com/api/usuarios/614227185f97d7dbb3c515eb HTT
 Content-Type: application/json
 
 {
-    "nombre": "user ",
-    "apellidos": "user ",
+    "nombre": "user67467",
+    "apellidos": "userUser",
     "fNacimiento": "2000/01/01",
     "telefono": "648579624",
     "email": "user@gmail.com",
-    "password": "246853"
+    "password": "568459"
 }
 
 ### Login del usuario

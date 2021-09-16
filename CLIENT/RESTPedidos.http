@@ -10,11 +10,11 @@ GET http://localhost:5000/api/pedidos/usuarios/612d1fa4eff4fb054bd12be3
 ### Crear un pedido
 POST http://localhost:5000/api/pedidos/ HTTP/1.1
 Content-Type: application/json
-Authorization: Bearer (token)
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZFVzdWFyaW8iOiI2MTQzNmI2ODAyMTQ1YjVhOTUwOTA5ODYiLCJlbWFpbCI6InVzZXIyQGdtYWlsLmNvbSIsImlhdCI6MTYzMTgxNzM0NiwiZXhwIjoxNjMxODIwOTQ2fQ.7bj7qq9pQsLkLKgeb5514LMgqKRyz8EI0QPKU3amdjE
 
 {
-    "id_usuario": "612f93aa6a88d598f9575ce2",
-    "id_pizzas": ["612d6ba0f12ccdf1d2fc8e91"],
+    "id_usuario": "61436b6802145b5a95090986",
+    "id_pizzas": ["61438dfe5c52aa4016c489a1"],
     "precio": 19.85
 }
 

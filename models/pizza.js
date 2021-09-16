@@ -20,6 +20,15 @@ const pizzaSchema = new Schema({
         type: String,
         required: true
     },
+    ingredientes: {
+        type: String,
+        required: true
+    },
+    cantidad: {
+        type: Number,
+        default: 1,
+        required: true
+    }
     // pedidos: [{
     //     type: mongoose.Types.ObjectId, 
     //     ref: 'Pedido'
