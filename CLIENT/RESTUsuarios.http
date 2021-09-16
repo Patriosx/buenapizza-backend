@@ -1,0 +1,67 @@
+### Solicitar usuarios
+GET http://localhost:5000/api/usuarios/
+### Solicitar usuarios
+GET https://pizzeria-cife.herokuapp.com/api/usuarios/
+
+### Solicitar usuarios por ID
+GET http://localhost:5000/api/usuarios/612d1fa4eff4fb054bd12be3
+
+### Solicitar usuarios por nombre
+GET http://localhost:5000/api/usuarios/nombre/Samuel
+
+### Solicitar usuarios por email
+GET http://localhost:5000/api/usuarios/email/samuel.511.5@gmail.com
+
+### Crear un usuario
+POST http://localhost:5000/api/usuarios/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "user4",
+    "apellidos": "2",
+    "fNacimiento": "2020/15/06",
+    "telefono": "64857962",
+    "email": "user4@gmail.com",
+    "password": "246853"
+}
+
+### Eliminar usuario por ID
+DELETE http://localhost:5000/api/usuarios/6140e5bd2e978ff0617a3411
+
+### Eliminar usuario por e-mail
+DELETE http://localhost:5000/api/usuarios/delemail/user2@/gmail.com
+
+### Modificar usuario
+PATCH https://buenapizza.herokuapp.com/api/usuarios/614227185f97d7dbb3c515eb HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "user ",
+    "apellidos": "user ",
+    "fNacimiento": "2000/01/01",
+    "telefono": "648579624",
+    "email": "user@gmail.com",
+    "password": "246853"
+}
+
+### Login del usuario
+POST http://localhost:5000/api/usuarios/login HTTP/1.1
+Content-Type: application/json
+
+{
+    "email": "user2@gmail.com",
+    "password": "246853"
+}
+
+### Crear un usuario
+POST http://localhost:5000/api/usuarios/ HTTP/1.1
+Content-Type: application/json
+
+{
+    "nombre": "user2",
+    "apellidos": "2",
+    "fNacimiento": "2020/15/06",
+    "telefono": "64857962",
+    "email": "user2@gmail.com",
+    "password": "246853"
+}
