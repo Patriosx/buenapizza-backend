@@ -9,7 +9,7 @@ function autentificacion(req, res, next) {
 		} else {
 			decodedToken = jwt.verify(token, process.env.JWT_KEY);
 			req.userData = {
-				userId: decodedToken.userId,
+				userId: decodedToken.idUsuario
 			};
 			next();
 		}

@@ -111,6 +111,11 @@ async function crearPedido(req, res, next) {
         error.code = 404;
         return next(error);
     }
+    if (usuario.id !== req.userData.userId) {
+        const err = new Error('No tiene permiso para crear un pedido')
+        err.code = 401; // Error de autorización
+        return next(err);
+    }
     // Inicio de sesión y Transacciones
     try {
         const sess = await mongoose.startSession();
@@ -142,13 +147,13 @@ async function modificarPedido(req, res, next) {
     const idPedido = req.params.pid;
     let pedido;
     try {
-        pedido = await Pedido.findById(idPedido); // Localizar el pedido en la BDD
+        pedido = await Pedido.findById(idPedido).populate('id_usuario'); // Localizar el pedido en la BDD
     } catch (error) {
         const err = new Error('No se ha podido realizar la operación')
         err.code = 500; // Internal Server Error
         return next(err);
     }
-    if (pedido.id_usuario.toString() !== req.userData.userId) {
+    if (pedido.id_usuario.id !== req.userData.userId) {
         const err = new Error('No tiene permiso para modificar este pedido')
         err.code = 401; // Error de autorización
         return next(err);

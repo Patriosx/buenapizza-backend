@@ -17,12 +17,12 @@ POST http://localhost:5000/api/usuarios/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre": "user40",
+    "nombre": "user55",
     "apellidos": "2",
     "fNacimiento": "2020/15/06",
     "telefono": "64857962",
-    "email": "user40@gmail.com",
-    "password": "246845"
+    "email": "user55@gmail.com",
+    "password": "123456"
 }
 
 ### Eliminar usuario por ID
@@ -49,8 +49,8 @@ POST http://localhost:5000/api/usuarios/login HTTP/1.1
 Content-Type: application/json
 
 {
-    "email": "user2@gmail.com",
-    "password": "246853"
+    "email": "user55@gmail.com",
+    "password": "123456"
 }
 
 ### Crear un usuario
