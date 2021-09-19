@@ -28,6 +28,10 @@ const pizzaSchema = new Schema({
         type: Number,
         default: 1,
         required: true
+    },
+    img_url: {
+        type: String,
+        required: true
     }
     // pedidos: [{
     //     type: mongoose.Types.ObjectId, 

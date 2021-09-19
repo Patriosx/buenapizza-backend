@@ -78,7 +78,8 @@ async function crearPizza(req, res, next) {
         precio,
         masa_pizza,
         ingredientes,
-        cantidad
+        cantidad,
+        img_url
     } = req.body;
     const nuevaPizza = new Pizza({
         nombre: nombre,
@@ -86,7 +87,8 @@ async function crearPizza(req, res, next) {
         precio: precio,
         masa_pizza: masa_pizza,
         ingredientes: ingredientes,
-        cantidad: cantidad
+        cantidad: cantidad,
+        img_url: img_url
     })
     try {
         await nuevaPizza.save();

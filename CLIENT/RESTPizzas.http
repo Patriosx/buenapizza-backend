@@ -12,18 +12,19 @@ POST http://localhost:5000/api/pizzas/ HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre": "Carbonara",
+    "nombre": "Tropical",
     "tamaño": "Mediana",
     "precio": 19.85,
     "masa_pizza": "Fina",
-    "ingredientes": "5 quesos gourmet, Salsa carbonara, Bacon gourmet, Champiñónes, Cebolla"
+    "ingredientes": "Salsa de tomate, mozzarella, jamón, piña y extra de mozzarella.",
+    "img_url": "https://sources-01.s3.eu-west-3.amazonaws.com/produccion/recursos/430/imagenes/fotos/articulos/PFTR.png"
 }
 
 ### Eliminar pizza por ID
-DELETE http://localhost:5000/api/pizzas/614395b45c52aa4016c489c1
+DELETE http://localhost:5000/api/pizzas/614671cb2bd27bfdcf9b6bab
 
 ### Modificar pizza
-PATCH http://localhost:5000/api/pizzas/6143965ceb089150ac782705 HTTP/1.1
+PATCH http://localhost:5000/api/pizzas/614671cb2bd27bfdcf9b6bab HTTP/1.1
 Content-Type: application/json
 
 {
