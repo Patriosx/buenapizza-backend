@@ -18,7 +18,7 @@ router.post("/",
     check('apellidos').not().isEmpty(),
     check('fNacimiento').not().isEmpty(),
     check('nombre').not().isEmpty(),
-    check('email').normalizeEmail().isEmail(),
+    check('email').isEmail(),
     check('password').isLength({min: 6}), controladorUsuarios.crearUsuario);
 // Login Usuario.
 router.post("/login", controladorUsuarios.loginUsuario);
