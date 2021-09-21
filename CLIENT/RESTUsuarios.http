@@ -32,16 +32,17 @@ DELETE http://localhost:5000/api/usuarios/6140e5bd2e978ff0617a3411
 DELETE http://localhost:5000/api/usuarios/delemail/user2@/gmail.com
 
 ### Modificar usuario
-PATCH https://buenapizza.herokuapp.com/api/usuarios/614227185f97d7dbb3c515eb HTTP/1.1
+#PATCH https://buenapizza.herokuapp.com/api/usuarios/614227185f97d7dbb3c515eb HTTP/1.1
+PATCH http://localhost:5000/api/usuarios/61437f09bd18fb2db58ded0e HTTP/1.1
 Content-Type: application/json
 
 {
-    "nombre": "user67467",
-    "apellidos": "userUser",
+    "nombre": "user",
+    "apellidos": "userio",
     "fNacimiento": "2000/01/01",
     "telefono": "648579624",
     "email": "user@gmail.com",
-    "password": "568459"
+    "password": "123"
 }
 
 ### Login del usuario

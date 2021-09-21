@@ -226,7 +226,9 @@ async function modificarUsuario(req, res, next) {
 		return next(err);
 	}
 
-	if (existeEmail.email && existeEmail.email !== usuario.email) {
+	if (!existeEmail) {
+		console.log("no existe emails");
+	} else if (existeEmail.email && existeEmail.email !== usuario.email) {
 		const err = new Error("Este email ya esta en uso");
 		err.code = 500; // Internal Server Error
 		return next(err);
