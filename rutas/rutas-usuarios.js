@@ -13,16 +13,12 @@ router.get("/nombre/:unombre", controladorUsuarios.recuperarUsuariosPorNombre);
 // Consulta a los usuarios por email.
 router.get("/email/:uemail", controladorUsuarios.recuperarUsuarioPorEmail);
 // Crear nuevo usuario.
-router.post("/",
-    check('nombre').not().isEmpty(),
-    check('apellidos').not().isEmpty(),
-    check('fNacimiento').not().isEmpty(),
-    check('nombre').not().isEmpty(),
-    check('password').isLength({min: 6}), controladorUsuarios.crearUsuario);
+router.post("/", check("nombre").not().isEmpty(), check("apellidos").not().isEmpty(), check("fNacimiento").not().isEmpty(), check("nombre").not().isEmpty(), check("password").isLength({ min: 6 }), controladorUsuarios.crearUsuario);
 // Login Usuario.
 router.post("/login", controladorUsuarios.loginUsuario);
 // Modificar datos del usuario.
 router.patch("/:uid", controladorUsuarios.modificarUsuario);
+router.patch("/password/:uid", controladorUsuarios.modificarPassword);
 router.use(checkAuth);
 // Eliminar usuario por email.
 router.delete("/delemail/:uemail", controladorUsuarios.eliminarUsuarioPorEmail);

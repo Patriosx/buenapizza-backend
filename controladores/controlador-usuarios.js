@@ -206,6 +206,39 @@ async function crearUsuario(req, res, next) {
 		console.log("Usuario creado.");
 	}
 }
+async function modificarPassword(req, res, next) {
+	const idUsuario = req.params.uid;
+	const { password } = req.body;
+	try {
+		usuario = await Usuario.findById(idUsuario);
+	} catch (error) {
+		const err = new Error("No se han podido recuperar los datos");
+		err.code = 500; // Internal Server Error
+		return next(err);
+	}
+	// Hasheamos la password.
+	let hashedPassword;
+	try {
+		hashedPassword = await bcrypt.hash(password, 10);
+	} catch (error) {
+		const err = new Error("No se ha podido modificar el usuario. Inténtelo de nuevo");
+		err.code = 500; // Internal Server Error
+		return next(err);
+	}
+	usuario.password = hashedPassword;
+	try {
+		usuario.save();
+	} catch (error) {
+		const err = new Error("No se ha podido modificar la contraseña");
+		err.code = 500; // Internal Server Error
+		return next(err);
+	}
+	// Devolvemos mensaje de estado OK y el usuario modificado.
+	res.status(200).json({
+		usuario: usuario,
+	});
+	console.log("backend: contraseña modificada");
+}
 // Modificar usuario
 async function modificarUsuario(req, res, next) {
 	const errores = validationResult(req);
@@ -214,7 +247,7 @@ async function modificarUsuario(req, res, next) {
 		error.code = 422;
 		return next(error);
 	}
-	const { nombre, apellidos, fNacimiento, telefono, email, password } = req.body; // Sacamos del body del request las propiedades que queremos modificar
+	const { nombre, apellidos, fNacimiento, telefono, email } = req.body; // Sacamos del body del request las propiedades que queremos modificar
 	const idUsuario = req.params.uid;
 	let usuario;
 	try {
@@ -233,22 +266,24 @@ async function modificarUsuario(req, res, next) {
 		err.code = 500; // Internal Server Error
 		return next(err);
 	}
+
 	// Hasheamos la password.
+	/*
 	let hashedPassword;
 	try {
 		hashedPassword = await bcrypt.hash(password, 10);
 	} catch (error) {
-		const err = new Error("No se ha podido crear el usuario. Inténtelo de nuevo");
+		const err = new Error("No se ha podido modificar el usuario. Inténtelo de nuevo");
 		err.code = 500; // Internal Server Error
 		return next(err);
 	}
+	*/
 	// Modificamos nombre, apellidos, fNacimiento, telefono, email, password
 	usuario.nombre = nombre;
 	usuario.apellidos = apellidos;
 	usuario.fNacimiento = fNacimiento;
 	usuario.telefono = telefono;
 	usuario.email = email;
-	usuario.password = hashedPassword;
 	// Guarda los datos modificados en la BDD.
 	try {
 		usuario.save();
@@ -324,3 +359,4 @@ exports.eliminarUsuarioPorEmail = eliminarUsuarioPorEmail;
 exports.crearUsuario = crearUsuario;
 exports.modificarUsuario = modificarUsuario;
 exports.loginUsuario = loginUsuario;
+exports.modificarPassword = modificarPassword;
