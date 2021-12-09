@@ -1,6 +1,6 @@
 # buenapizza-backend
 
-Backend:
+Backend stack:
 <ul>
 <li>Nodejs</li>
 <li>Express</li>
